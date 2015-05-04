@@ -1,5 +1,9 @@
 digraph blockdiagram {
-    concentrate=true;
+
+    graph [dpi=900]
+    node [fontsize=12]
+    concentrate=true
+
     node [shape=box] {
         ifc [label="IFC"]
         nucleo [label="Nucleo"]

@@ -1,5 +1,9 @@
 digraph software_flowchart {
+
+    graph [dpi=900]
+    node [fontsize=12]
     concentrate=true
+
     node [shape=box] {
         terminal [label="User Terminal"]
         nucleo [label="Nucleo"]

@@ -1,5 +1,8 @@
 digraph flowchart {
 
+    graph [dpi=900]
+    node [fontsize=12]
+
     node [shape=box] {
         input_object_coords [label="Enter object coordinates"];
         input_destination_coords [label="Enter destination coordinates"];
