@@ -1,0 +1,18 @@
+digraph blockdiagram {
+    node [shape=box] {
+        ifc [label="IFC"]
+        nucleo [label="Nucleo"]
+        terminal [label="User Terminal"]
+        user [label="User", color="white"]
+        arm [label="AL5D"]
+    }
+
+    user -> terminal
+    terminal -> user
+    terminal -> ifc
+
+    ifc -> nucleo
+    ifc -> terminal
+
+    nucleo -> arm
+}
