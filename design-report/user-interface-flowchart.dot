@@ -1,0 +1,21 @@
+digraph flowchart {
+
+    node [shape=box] {
+        input_object_coords [label="Enter object coordinates"];
+        input_destination_coords [label="Enter destination coordinates"];
+        ifc [label="IFC"];
+        external_system [label="External System"];
+        invalid_input [label="Invalid Input"];
+    }
+
+    node [shape=diamond] {
+        coord_check [label="Coordinates \nwithin range?"];
+    }
+
+    input_object_coords -> input_destination_coords -> ifc -> coord_check;
+    coord_check -> invalid_input [label="NO"];
+    coord_check -> external_system [label="YES"];
+
+    invalid_input -> input_object_coords;
+    external_system -> input_object_coords;
+}
