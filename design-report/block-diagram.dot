@@ -1,18 +1,17 @@
 digraph blockdiagram {
+    concentrate=true;
     node [shape=box] {
         ifc [label="IFC"]
         nucleo [label="Nucleo"]
         terminal [label="User Terminal"]
-        user [label="User", color="white"]
+        user [label="User"]
         arm [label="AL5D"]
     }
 
     user -> terminal
-    terminal -> user
-    terminal -> ifc
+    terminal -> {user, ifc}
 
-    ifc -> nucleo
-    ifc -> terminal
+    ifc -> {nucleo, terminal}
 
     nucleo -> arm
 }
