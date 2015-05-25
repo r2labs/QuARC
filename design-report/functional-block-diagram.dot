@@ -1,0 +1,21 @@
+digraph blockdiagram {
+
+    graph [dpi=900]
+    node [fontsize=12]
+    concentrate=true
+
+    node [shape=box] {
+        ifc [label="IFC"]
+        nucleo [label="Nucleo"]
+        terminal [label="User Terminal"]
+        user [label="User"]
+        arm [label="AL5D"]
+    }
+
+    user -> terminal
+    terminal -> {user, ifc}
+
+    ifc -> {nucleo, terminal}
+
+    nucleo -> arm
+}

@@ -1,0 +1,23 @@
+digraph software_flowchart {
+
+    graph [dpi=900]
+    node [fontsize=12]
+    concentrate=true
+
+    node [shape=box] {
+        terminal [label="User Terminal"]
+        nucleo [label="Nucleo"]
+        main [label="Main"]
+        coordinate_angle_converter [label="Coordinate-to-Angle \nConverter"]
+        trig_executor [label="Trigonometric Function \nExecutor"]
+        path_planner [label="Path Planner"]
+        lut [label="LUT"]
+    }
+
+    terminal -> main
+    main -> {coordinate_angle_converter, path_planner, terminal} [dir=both]
+    main -> nucleo
+
+    coordinate_angle_converter -> trig_executor [dir=both]
+    trig_executor -> lut [dir=both]
+}
