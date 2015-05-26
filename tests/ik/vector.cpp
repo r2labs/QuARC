@@ -13,7 +13,6 @@ const float ik::vector::magnitude() {
                 pow(get_off_z(), 2));
 }
 
-
-const float get_off_x() { return off_x; }
-const float get_off_y() { return off_y; }
-const float get_off_z() { return off_z; }
+const float ik::vector::get_off_x(void) { return off_x; }
+const float ik::vector::get_off_y(void) { return off_y; }
+const float ik::vector::get_off_z(void) { return off_z; }
