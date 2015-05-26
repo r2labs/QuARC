@@ -13,9 +13,9 @@ namespace ik {
 
         const float magnitude(void);
 
-        float get_off_x(void);
-        float get_off_y(void);
-        float get_off_z(void);
+        const float get_off_x(void);
+        const float get_off_y(void);
+        const float get_off_z(void);
 
     private:
         ik::position* origin;
