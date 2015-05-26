@@ -1,3 +1,5 @@
+#include <math.h>
+
 #include "vector.hpp"
 
 ik::vector::vector() {}
