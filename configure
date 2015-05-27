@@ -1,3 +1,15 @@
-cd tests &&
-mkdir -p build && cd build && cmake .. &&
-make
+export REPO_ROOT=`pwd`
+export CMAKE_ROOT=${REPO_ROOT}/tests
+export BUILD_ROOT=${CMAKE_ROOT}/build
+
+unconfigure() {
+    rm -rf ${BUILD_ROOT}
+    cd ${REPO_ROOT}
+}
+
+reconfigure() {
+    cd ${CMAKE_ROOT} && rm -rf ${BUILD_ROOT} &&
+        mkdir -p ${BUILD_ROOT} && cd ${BUILD_ROOT} &&
+        cmake $@ ..
+}
+

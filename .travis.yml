@@ -16,4 +16,5 @@ before_script:
   - source ./configure
 
 script:
+  - reconfigure -DENABLE_PROFILING=true && make
   - ./distance-projection/distance-projection
