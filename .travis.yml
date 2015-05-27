@@ -3,6 +3,15 @@ compiler:
   - clang
   - gcc
 
+# By default, T-CI's servers have Ubuntu 12.04 LTS with gcc 4.6.
+# This installs the ubuntu-toolchain test repository and install gcc 4.8.
+before_install:
+  - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
+  - sudo apt-get update -qq
+install:
+  - sudo apt-get install -qq gcc-4.8 g++-4.8
+  - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
+
 before_script:
   - source ./configure
 
