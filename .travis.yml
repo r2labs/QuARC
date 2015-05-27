@@ -20,4 +20,4 @@ script:
   - ./distance-projection/distance-projection
 
 after_success:
-  - coveralls -b . -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT} --gcov-options '\-lp'
+  - coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} --gcov-options '\-lp'
