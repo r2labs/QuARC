@@ -4,17 +4,15 @@ compiler:
   - gcc
 
 env:
-  - CMAKE_ARGS="-DENABLE_PROFILING=t"
   global:
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "NQ1OckGoSKZgkQGizyCNX1AMt1Yieeh5TTM/uVhHys9AqBjsOi2NiP+k0QJSqnVYxXm0jvde5vZsnoz+k9ey9x/0BTf+KKv3ldDo1S0iSKEz2UgK2H5KGTY4P7WDQ1u11H7xwv7hjHt09OrIGUVoA946DQZ2oX9lKFiWaPQHpbYxuEz3HSH1vJdB4oCXQCCk2kRM/ky49+t/X2yoiHKwLWYKzMZXCrAIBLvLrjY+ol47SnoiWoN5n8vrZFq9eNVihw8aFdBgUZZfmBGH8g+qgHl4Om+Ync3vd4J4utv9r1670bdOHVfwEmEu7GYli3j3fSqHLtSo4wCd4M5ZxsmBqhMomZkLuPWyoNuvk53jM0JPh6ry+Tg7nILLn/QWGjO4oVLi21ZBote4NX0o6dYlcJAlz08/cmzg+06eLFoosn7JPNhABl2+piuxoNvdRkbtQsBy3KKmmE3DyF5XNKYTst9MIiMwJhVHGn6t6fJdi3Q7gWmbc0pCkzW91mcUXso3kuR03JmWuc2tE9cF7ezBYmGD3rrZUx1DBcvnbJQRieiKGFvJtgsRR6ZQts9D5HFvgRjHp0CFzmyV5Qgy8kg0G2sWU7BdgGC2bpO/CsrhQwam0oPWauvLMdgzmW9D5ZHswp4obKWLvH31coSQHnYJS+3HTYCkPHpcoexmcVCKHfk="
+    - secure: "NQ1OckGoSKZgkQGizyCNX1AMt1Yieeh5TTM/uVhHys9AqBjsOi2NiP+k0QJSqnVYxXm0jvde5vZsnoz+k9ey9x/0BTf+KKv3ldDo1S0iSKEz2UgK2H5KGTY4P7WDQ1u11H7xwv7hjHt09OrIGUVoA946DQZ2oX9lKFiWaPQHpbYxuEz3HSH1vJdB4oCXQCCk2kRM/ky49+t/X2yoiHKwLWYKzMZXCrAIBLvLrjY+ol47SnoiWoN5n8vrZFq9eNVihw8aFdBgUZZfmBGH8g+qgHl4Om+Ync3vd4J4utv9r1670bdOHVfwEmEu7GYli3j3fSqHLtSo4wCd4M5ZxsmBqhMomZkLuPWyoNuvk53jM0JPh6ry+Tg7nILLn/QWGjO4oVLi21ZBote4NX0o6dYlcJAlz08/cmzg+06eLFoosn7JPNhABl2+piuxoNvdRkbtQsBy3KKmmE3DyF5XNKYTst9MIiMwJhVHGn6t6fJdi3Q7gWmbc0pCkzW91mcUXso3kuR03JmWuc2tE9cF7ezBYmGD3rrZUx1DBcvnbJQRieiKGFvJtgsRR6ZQts9D5HFvgRjHp0CFzmyV5Qgy8kg0G2sWU7BdgGC2bpO/CsrhQwam0oPWauvLMdgzmW9D5ZHswp4obKWLvH31coSQHnYJS+3HTYCkPHpcoexmcVCKHfk="
+  matrix:
+    - CMAKE_ARGS="-DENABLE_PROFILING=t"
 
 addons:
   coverity_scan:
     project:
       name: "r2labs/QuARC"
-      description: "Build submitted via Travis CI"
     notification_email: hershal.bhave@gmail.com
     build_command_prepend: "source ./configure; reconfigure"
     build_command:   "make -j4"
