@@ -18,3 +18,6 @@ before_script:
 script:
   - reconfigure -DENABLE_PROFILING=true && make
   - ./distance-projection/distance-projection
+
+after_success:
+  - coveralls -b . -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT} --gcov-options '\-lp'
