@@ -3,11 +3,15 @@ compiler:
   - clang
   - gcc
 
+env:
+  - CMAKE_ARGS="-DENABLE_PROFILING=t"
+
 # Install gcc 4.8 and cpp-coveralls
 before_install:
   - sudo pip install cpp-coveralls
   - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
   - sudo apt-get update -qq
+
 install:
   - sudo apt-get install -qq gcc-4.8 g++-4.8
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
@@ -16,7 +20,7 @@ before_script:
   - source ./configure
 
 script:
-  - reconfigure -DENABLE_PROFILING=true && make
+  - reconfigure ${CMAKE_ARGS} && make
   - ./distance-projection/distance-projection
 
 after_success:
