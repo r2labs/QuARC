@@ -1,0 +1,10 @@
+language: cpp
+compiler:
+  - clang
+  - gcc
+
+before_script:
+  - source ./configure
+
+script:
+  - ./distance-projection/distance-projection
