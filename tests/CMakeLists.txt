@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 2.8.7)
 
 if(CMAKE_CXX_COMPILER_ID EQUAL "Clang")
   set (CMAKE_CXX_FLAGS "-std=c++1y -stdlib=libc++")
