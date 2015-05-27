@@ -1,5 +1,7 @@
 * QuARC
 Qualcomm Articulated Robot Control
-[[https://travis-ci.org/r2labs/QuARC.svg?branch=master][Build Status]] [[https://coveralls.io/repos/r2labs/QuARC/badge.svg][Coverage Status]]
+
+[[file:https://travis-ci.org/r2labs/QuARC.svg?branch=master][https://travis-ci.org/r2labs/QuARC]]
+[[file:https://coveralls.io/repos/r2labs/QuARC/badge.svg][https://coveralls.io/r/r2labs/QuARC]]
 ** TODO
 Write Readme
