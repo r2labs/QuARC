@@ -21,7 +21,7 @@ before_script:
 
 script:
   - reconfigure ${CMAKE_ARGS} && make
-  - ./distance-projection/distance-projection
+  - ./tests/distance-projection/distance-projection
 
 after_success:
   - coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT}/CMakeFiles --gcov-options '\-lp'

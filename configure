@@ -1,5 +1,5 @@
 export REPO_ROOT=`pwd`
-export CMAKE_ROOT=${REPO_ROOT}/tests
+export CMAKE_ROOT=${REPO_ROOT}
 export BUILD_ROOT=${CMAKE_ROOT}/build
 
 unconfigure() {

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "node.hpp"
+#include "ik/node.hpp"
 
 int main() {
 
