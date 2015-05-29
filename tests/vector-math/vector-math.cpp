@@ -41,12 +41,15 @@ int test_mag_normalized() {
         v->normalize();
 
         const auto calculated = v->magnitude();
-        const auto actual = 1;
+        const auto actual = 1.0f;
 
         if (fabs(calculated - actual) > pow(10, -6)) {
             ++errors;
 
-            std::cout << "error: " << v->to_string() << "did not have mag = 1\n";
+            std::cout << "error: " << v->to_string() << " did not have mag = 1\n";
+            std::cout << "calculated: " << calculated << "\n"
+                      << "actual: " << actual << "\n";
+
         }
     }
 
