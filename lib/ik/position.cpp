@@ -6,6 +6,13 @@ ik::position::position()
 ik::position::position(float x, float y, float z)
     : x(x), y(y), z(z) {}
 
+ik::position::position(const ik::position& p) {
+
+    this->x = p.get_x();
+    this->y = p.get_y();
+    this->z = p.get_z();
+}
+
 ik::position::~position() { }
 
 const ik::vector* ik::position::vector_to(const ik::position* pos) const {
