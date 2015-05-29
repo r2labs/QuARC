@@ -46,6 +46,19 @@ float ik::vector::angle_between(const ik::vector* v) const {
     return acos(dot(v)/(magnitude()*v->magnitude()));
 }
 
+int ik::vector::close_to(const ik::vector* v) const {
+
+    const auto epsilon = pow(10.0 ,-6);
+
+    if((fabs(get_off_x() - v->get_off_x()) < epsilon) &&
+       (fabs(get_off_y() - v->get_off_y()) < epsilon) &&
+       (fabs(get_off_z() - v->get_off_z()) < epsilon)) {
+        return 1;
+    }
+
+    return 0;
+}
+
 const std::string ik::vector::to_string() const {
 
     std::stringstream out;

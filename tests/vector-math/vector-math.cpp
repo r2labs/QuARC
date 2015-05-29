@@ -1,6 +1,10 @@
 #include <math.h>
+#include <time.h>
+#include <stdlib.h>
+
 #include <iostream>
 #include <vector>
+#include <functional>
 
 #include "ik/vector.hpp"
 #include "ik/position.hpp"
@@ -10,16 +14,58 @@ struct vector_math_test_fixture {
     ik::position* origin;
     std::vector<ik::vector*>* vecs;
 
-    vector_math_test_fixture() {
+    enum class populate_method { RANDOM, UNIT, CARDINAL};
+
+    static ik::vector* populate_random(ik::position* origin) {
+        int r0 = (int)((float)(rand()) / (float)(RAND_MAX) * (RAND_MAX));
+        int r1 = (int)((float)(rand()) / (float)(RAND_MAX) * (RAND_MAX));
+        int r2 = (int)((float)(rand()) / (float)(RAND_MAX) * (RAND_MAX));
+        return new ik::vector(origin, r0, r1, r2);
+    }
+
+    static ik::vector* populate_unit(ik::position* origin) {
+
+        int u = (int)((float)(rand()) / (float)(RAND_MAX * 2.0 - 1.0));
+        int theta = (int)((float)(rand()) / (float)(RAND_MAX) * 2*M_PI);
+
+        const float x = sqrt(1  - pow(u, 2))*cos(theta);
+        const float y = sqrt(1  - pow(u, 2))*sin(theta);
+        const float z = u;
+
+        return new ik::vector(origin, x, y, z);
+    }
+
+    static ik::vector* populate_cardinal(ik::position* origin) {
+        int r = (int)((float)(rand()) / (float)(RAND_MAX) * 3.0f);
+        switch(r) {
+        case 0: return new ik::vector(origin, 1, 0, 0); break;
+        case 1: return new ik::vector(origin, 0, 1, 0); break;
+        case 2: return new ik::vector(origin, 0, 0, 1); break;
+        default: exit(1);
+        }
+    }
+
+    void populate(std::size_t n, ik::vector*(*fn)(ik::position*)) {
+
+        for(std::size_t i=0; i<n; ++i) {
+            const auto vec = fn(origin);
+            vecs->push_back(vec);
+        }
+    }
+
+    vector_math_test_fixture(std::size_t num, populate_method mtd) {
+
+        srand(time(0));
+
         origin = new ik::position(0, 0, 0);
         vecs = new std::vector<ik::vector*>();
-        vecs->push_back(new ik::vector(origin, 0, 0, 1));
-        vecs->push_back(new ik::vector(origin, 0, 1, 0));
-        vecs->push_back(new ik::vector(origin, 0, 1, 1));
-        vecs->push_back(new ik::vector(origin, 1, 0, 0));
-        vecs->push_back(new ik::vector(origin, 1, 0, 1));
-        vecs->push_back(new ik::vector(origin, 1, 1, 0));
-        vecs->push_back(new ik::vector(origin, 1, 1, 1));
+
+        switch(mtd) {
+        case populate_method::RANDOM   : populate(num, populate_random);   break;
+        case populate_method::UNIT     : populate(num, populate_unit);     break;
+        case populate_method::CARDINAL : populate(num, populate_cardinal); break;
+        default: exit(1);
+        }
     }
 
     ~vector_math_test_fixture() {

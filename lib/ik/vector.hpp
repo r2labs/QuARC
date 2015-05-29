@@ -26,6 +26,7 @@ namespace ik {
         float dot(const ik::vector* v) const;
         float angle_between(const ik::vector* v) const;
         const std::string to_string(void) const;
+        int close_to(const ik::vector* v) const;
 
         /* modifier functions */
         void normalize();
