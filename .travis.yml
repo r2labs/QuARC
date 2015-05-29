@@ -22,6 +22,7 @@ before_script:
 script:
   - reconfigure ${CMAKE_ARGS} && make
   - valgrind --leak-check=summary ./tests/distance-projection/distance-projection
+  - valgrind --leak-check=summary ./tests/vector-math/vector-math
 
 after_success:
   - coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT}/CMakeFiles --gcov-options '\-lp'
