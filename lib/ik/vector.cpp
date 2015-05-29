@@ -1,5 +1,7 @@
 #include <math.h>
 
+#include <sstream>
+
 #include "vector.hpp"
 
 ik::vector::vector() {}
@@ -21,4 +23,15 @@ float ik::vector::magnitude() const {
     return sqrt(pow(get_off_x(), 2) +
                 pow(get_off_y(), 2) +
                 pow(get_off_z(), 2));
+}
+
+const std::string ik::vector::to_string() const {
+
+    std::stringstream out;
+    out << "<" << origin->to_string()
+        << get_off_x() << ","
+        << get_off_y() << ","
+        << get_off_z() << ">";
+
+    return out.str();
 }

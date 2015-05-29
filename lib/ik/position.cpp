@@ -1,3 +1,5 @@
+#include <sstream>
+
 #include "position.hpp"
 
 ik::position::position()
@@ -22,6 +24,17 @@ const ik::vector* ik::position::vector_to(const ik::position* pos) const {
     auto z = pos->get_z() - get_z();
 
     return new ik::vector(new ik::position(get_x(), get_y(), get_z()), x, y, z);
+}
+
+const std::string ik::position::to_string() const {
+
+    std::stringstream out;
+    out << "("
+        << get_x() << ","
+        << get_y() << ","
+        << get_z() << ")";
+
+    return out.str();
 }
 
 /*! Assignment operator */

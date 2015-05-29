@@ -1,6 +1,8 @@
 #ifndef IK_POSITION_HPP
 #define IK_POSITION_HPP
 
+#include <string>
+
 #include "vector.hpp"
 
 namespace ik {
@@ -14,6 +16,7 @@ namespace ik {
         ~position();
 
         const ik::vector* vector_to(const ik::position* p) const;
+        const std::string to_string(void) const;
 
         float get_x(void) const { return this->x; }
         float get_y(void) const { return this->y; }
