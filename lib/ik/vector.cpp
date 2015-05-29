@@ -49,7 +49,7 @@ float ik::vector::angle_between(const ik::vector* v) const {
 const std::string ik::vector::to_string() const {
 
     std::stringstream out;
-    out << "<" << origin->to_string()
+    out << "<" << origin->to_string() << ","
         << get_off_x() << ","
         << get_off_y() << ","
         << get_off_z() << ">";
