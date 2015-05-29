@@ -34,7 +34,7 @@ int test_mag_normalized() {
     vector_math_test_fixture* f = new vector_math_test_fixture();
     int errors = 0;
 
-    for (int i=0; i<f->vecs->size(); ++i) {
+    for (std::size_t i=0; i<f->vecs->size(); ++i) {
 
         const auto v = f->vecs->at(i);
 
