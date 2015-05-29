@@ -43,7 +43,7 @@ void ik::vector::normalize() {
 
 float ik::vector::angle_between(const ik::vector* v) const {
 
-    acos(dot(v)/(magnitude()*v->magnitude()));
+    return acos(dot(v)/(magnitude()*v->magnitude()));
 }
 
 const std::string ik::vector::to_string() const {
@@ -63,6 +63,7 @@ ik::vector& ik::vector::operator= (const ik::vector& v) {
     set_off_x(v.get_off_x());
     set_off_y(v.get_off_y());
     set_off_z(v.get_off_z());
+    return *this;
 }
 
 void ik::vector::set_origin(const ik::position* o) {
