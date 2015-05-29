@@ -29,7 +29,7 @@ struct vector_math_test_fixture {
     }
 };
 
-int test_mag() {
+int test_mag_normalized() {
 
     vector_math_test_fixture* f = new vector_math_test_fixture();
     int errors = 0;
@@ -69,7 +69,7 @@ int main() {
 
     int accum = 0;
 
-    accum+= test_mag();
+    accum+= test_mag_normalized();
     accum+= test_angle_between();
 
     std::cout << "errors: " << accum << "\n";
