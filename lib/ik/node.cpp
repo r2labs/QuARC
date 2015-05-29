@@ -7,6 +7,9 @@ ik::node::node(float x, float y, float z, ik::node* next, ik::node* prev) :
     pos = new ik::position(x, y, z);
 }
 
+ik::node::~node() {
 
-    return &pos;
+    delete pos;
+}
+
 }

@@ -10,6 +10,7 @@ namespace ik {
     public:
         position();
         position(float x, float y, float z);
+        ~position();
 
         ik::vector* vector_to(ik::position* p);
 

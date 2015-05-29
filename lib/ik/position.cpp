@@ -6,6 +6,7 @@ ik::position::position()
 ik::position::position(float x, float y, float z)
     : x(x), y(y), z(z) {}
 
+ik::position::~position() { }
 
     return new ik::vector(this, pos->get_x() - get_x(),
                           pos->get_y() - get_y(),
