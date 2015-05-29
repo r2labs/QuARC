@@ -8,8 +8,12 @@ ik::position::position(float x, float y, float z)
 
 ik::position::~position() { }
 
-    return new ik::vector(this, pos->get_x() - get_x(),
-                          pos->get_y() - get_y(),
-                          pos->get_z() - get_z());
+ik::vector* ik::position::vector_to(ik::position* pos) {
+
+    auto x = pos->get_x() - get_x();
+    auto y = pos->get_y() - get_y();
+    auto z = pos->get_z() - get_z();
+
+    return new ik::vector(new ik::position(get_x(), get_y(), get_z()), x, y, z);
 }
 
