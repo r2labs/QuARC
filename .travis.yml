@@ -13,7 +13,7 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get install -qq gcc-4.8 g++-4.8
+  - sudo apt-get install -qq gcc-4.8 g++-4.8 valgrind
   - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
 
 before_script:
@@ -21,7 +21,7 @@ before_script:
 
 script:
   - reconfigure ${CMAKE_ARGS} && make
-  - ./tests/distance-projection/distance-projection
+  - valgrind --leak-check=summary ./tests/distance-projection/distance-projection
 
 after_success:
   - coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT}/CMakeFiles --gcov-options '\-lp'
