@@ -70,7 +70,9 @@ struct vector_math_test_fixture {
 
     ~vector_math_test_fixture() {
         delete origin;
-        vecs->clear();
+        for(std::size_t i=0; i<vecs->size(); ++i) {
+            delete vecs->at(i);
+        }
         delete vecs;
     }
 };
@@ -189,6 +191,7 @@ int test_angle_between() {
         ++errors;
     }
 
+    delete f;
     return errors;
 }
 
