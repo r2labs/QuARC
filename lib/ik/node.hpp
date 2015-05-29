@@ -9,6 +9,8 @@ namespace ik {
         node(float x, float y, float z, ik::node* next=0, ik::node* prev=0);
         ~node();
 
+        float distance_to(ik::node* n);
+
         void set_position(ik::position* p) { pos = p; }
         void set_next(ik::node* n) { next = n; }
         void set_prev(ik::node* n) { prev = n; }

@@ -12,4 +12,10 @@ ik::node::~node() {
     delete pos;
 }
 
+float ik::node::distance_to(ik::node* n) {
+
+    const auto vec_to =  get_position()->vector_to(n->get_position());
+    const auto mag = vec_to->magnitude();
+    delete vec_to;
+    return mag;
 }
