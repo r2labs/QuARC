@@ -11,8 +11,8 @@ namespace ik {
         vector();
         vector(ik::position* origin, float off_x=0, float off_y=0, float off_z=0);
 
-        const float magnitude(void);
 
+        float magnitude(void);
 
         float get_off_x(void) { return off_x; }
         float get_off_y(void) { return off_y; }

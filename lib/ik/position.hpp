@@ -11,7 +11,7 @@ namespace ik {
         position();
         position(float x, float y, float z);
 
-        const ik::vector* vector_to(ik::position* p);
+        ik::vector* vector_to(ik::position* p);
 
         float get_x(void) { return this->x; }
         float get_y(void) { return this->y; }
