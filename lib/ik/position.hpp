@@ -22,6 +22,8 @@ namespace ik {
         void set_y(float y) { this->y = y; }
         void set_z(float z) { this->z = z; }
 
+        ik::position& operator= (ik::position& p);
+
     private:
         float x;
         float y;

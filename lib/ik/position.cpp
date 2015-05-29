@@ -17,3 +17,9 @@ ik::vector* ik::position::vector_to(ik::position* pos) {
     return new ik::vector(new ik::position(get_x(), get_y(), get_z()), x, y, z);
 }
 
+/*! Assignment operator */
+ik::position& ik::position::operator= (ik::position& p) {
+    set_x(p.get_x());
+    set_y(p.get_y());
+    set_z(p.get_z());
+}
