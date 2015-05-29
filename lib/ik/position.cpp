@@ -19,11 +19,11 @@ ik::position::~position() { }
 
 const ik::vector* ik::position::vector_to(const ik::position* pos) const {
 
-    auto x = pos->get_x() - get_x();
-    auto y = pos->get_y() - get_y();
-    auto z = pos->get_z() - get_z();
+    const auto x = pos->get_x() - get_x();
+    const auto y = pos->get_y() - get_y();
+    const auto z = pos->get_z() - get_z();
 
-    return new ik::vector(new ik::position(get_x(), get_y(), get_z()), x, y, z);
+    return new ik::vector(pos, x, y, z);
 }
 
 const std::string ik::position::to_string() const {
