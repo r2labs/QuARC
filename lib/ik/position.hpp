@@ -27,6 +27,7 @@ namespace ik {
         void set_z(float z) { this->z = z; }
 
         ik::position& operator= (const ik::position &p);
+        void copy(const ik::position* p);
 
     private:
         float x;

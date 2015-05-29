@@ -44,3 +44,10 @@ ik::position& ik::position::operator= (const ik::position& p) {
     set_y(p.get_y());
     set_z(p.get_z());
 }
+
+void ik::position::copy(const ik::position* p) {
+
+    set_x(p->get_x());
+    set_y(p->get_y());
+    set_z(p->get_z());
+}

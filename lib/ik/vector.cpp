@@ -1,4 +1,5 @@
 #include <math.h>
+#include <tgmath.h>
 
 #include <sstream>
 
@@ -25,6 +26,26 @@ float ik::vector::magnitude() const {
                 pow(get_off_z(), 2));
 }
 
+float ik::vector::dot(const ik::vector* v) const {
+
+    return get_off_x()*v->get_off_x() +
+        get_off_y()*v->get_off_y() +
+        get_off_z()*v->get_off_z();
+}
+
+void ik::vector::normalize() {
+
+    const auto mag = magnitude();
+    set_off_x(get_off_x()/mag);
+    set_off_y(get_off_y()/mag);
+    set_off_z(get_off_z()/mag);
+}
+
+float ik::vector::angle_between(const ik::vector* v) const {
+
+    acos(dot(v)/(magnitude()*v->magnitude()));
+}
+
 const std::string ik::vector::to_string() const {
 
     std::stringstream out;
@@ -34,4 +55,16 @@ const std::string ik::vector::to_string() const {
         << get_off_z() << ">";
 
     return out.str();
+}
+
+ik::vector& ik::vector::operator= (const ik::vector& v) {
+
+    set_origin(v.get_origin());
+    set_off_x(v.get_off_x());
+    set_off_y(v.get_off_y());
+    set_off_z(v.get_off_z());
+}
+
+void ik::vector::set_origin(const ik::position* o) {
+    this->origin->copy(o);
 }
