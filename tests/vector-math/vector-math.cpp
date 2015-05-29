@@ -75,9 +75,39 @@ struct vector_math_test_fixture {
     }
 };
 
+int test_mag_unit() {
+
+    vector_math_test_fixture* f = new vector_math_test_fixture(1000,
+        vector_math_test_fixture::populate_method::UNIT);
+
+    int errors = 0;
+
+    for (std::size_t i=0; i<f->vecs->size(); ++i) {
+
+        const auto v = f->vecs->at(i);
+
+        const auto calculated = v->magnitude();
+        const auto actual = 1.0f;
+
+        if (fabs(calculated - actual) > pow(10, -6)) {
+            ++errors;
+
+            std::cout << "error: " << v->to_string() << " did not have mag = 1\n";
+            std::cout << "calculated: " << calculated << "\n"
+                      << "actual: " << actual << "\n";
+
+        }
+    }
+
+    delete f;
+    return errors;
+}
+
 int test_mag_normalized() {
 
-    vector_math_test_fixture* f = new vector_math_test_fixture();
+    vector_math_test_fixture* f = new vector_math_test_fixture(1000,
+        vector_math_test_fixture::populate_method::RANDOM);
+
     int errors = 0;
 
     for (std::size_t i=0; i<f->vecs->size(); ++i) {
@@ -105,12 +135,61 @@ int test_mag_normalized() {
 
 int test_angle_between() {
 
-    /* const auto calculated_angle = v0->angle_between(v1); */
+    vector_math_test_fixture* f = new vector_math_test_fixture(1000,
+        vector_math_test_fixture::populate_method::CARDINAL);
 
-    /* std::cout << "angle between v0, v1: " << calculated_angle << "\n"; */
+    const auto num_elements = f->vecs->size();
+    std::size_t num_same = 0;
+    std::size_t num_diff = 0;
 
-    /* return */
-    return 0;
+    int errors = 0;
+
+    float actual;
+    float calculated;
+
+    for(std::size_t i=0; i<num_elements; ++i) {
+        const auto v0 = f->vecs->at(i);
+        for(std::size_t j=0; j<num_elements; ++j) {
+            const auto v1 = f->vecs->at(j);
+            calculated = v1->angle_between(v0);
+            if (v0->close_to(v1)) {
+                ++num_same;
+                actual = 0.0f;
+            } else {
+                ++num_diff;
+                actual = M_PI/2.0f;
+            }
+
+            if (fabs(calculated - actual) > pow(10, -6)) {
+                ++errors;
+
+                std::cout << "error: incorrect angle between "
+                          << v0->to_string() << ", "
+                          << v1->to_string() << "\n";
+                std::cout << "calculated: " << calculated << "\n"
+                          << "actual: " << actual << "\n";
+
+            }
+        }
+    }
+
+    if (num_same < (pow(num_elements, 2)/4)) {
+
+        std::cout << "error: did not generate at least "
+                  << (pow(num_elements, 2)/4)
+                  << " matching elements";
+
+        ++errors;
+    }
+    if ((num_same + num_diff) != pow(num_elements, 2)) {
+
+        std::cout << "error: sum of same(" << num_same
+                  << ") and diff(" << num_diff << ") not "
+                  << pow(num_elements, 2) << " matching elements";
+        ++errors;
+    }
+
+    return errors;
 }
 
 
@@ -118,6 +197,7 @@ int main() {
 
     int accum = 0;
 
+    accum+= test_mag_unit();
     accum+= test_mag_normalized();
     accum+= test_angle_between();
 
