@@ -4,7 +4,10 @@
 
 ik::vector::vector() {}
 
-ik::vector::vector(ik::position* origin, float off_x, float off_y, float off_z)
+ik::vector::vector(ik::position* origin,
+                   float off_x,
+                   float off_y,
+                   float off_z)
     : origin(origin), off_x(off_x), off_y(off_y), off_z(off_z) {}
 
 const float ik::vector::magnitude() {
