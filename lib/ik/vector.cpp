@@ -14,7 +14,7 @@ ik::vector::~vector() {
     delete origin;
 }
 
-float ik::vector::magnitude() {
+float ik::vector::magnitude() const {
     return sqrt(pow(get_off_x(), 2) +
                 pow(get_off_y(), 2) +
                 pow(get_off_z(), 2));

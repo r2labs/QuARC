@@ -12,11 +12,11 @@ namespace ik {
         position(float x, float y, float z);
         ~position();
 
-        ik::vector* vector_to(ik::position* p);
+        const ik::vector* vector_to(const ik::position* p) const;
 
-        float get_x(void) { return this->x; }
-        float get_y(void) { return this->y; }
-        float get_z(void) { return this->z; }
+        float get_x(void) const { return this->x; }
+        float get_y(void) const { return this->y; }
+        float get_z(void) const { return this->z; }
 
         void set_x(float x) { this->x = x; }
         void set_y(float y) { this->y = y; }

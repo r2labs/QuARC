@@ -9,15 +9,15 @@ namespace ik {
         node(float x, float y, float z, ik::node* next=0, ik::node* prev=0);
         ~node();
 
-        float distance_to(ik::node* n);
+        float distance_to(ik::node* n) const;
 
         void set_position(ik::position* p) { pos = p; }
         void set_next(ik::node* n) { next = n; }
         void set_prev(ik::node* n) { prev = n; }
 
-        ik::position* get_position() { return pos; }
-        ik::node* get_next() { return next; }
-        ik::node* get_prev() { return prev; }
+        const ik::position* get_position() const { return pos; }
+        const ik::node* get_next() const { return next; }
+        const ik::node* get_prev() const { return prev; }
 
     private:
         ik::position* pos;

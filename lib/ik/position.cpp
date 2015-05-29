@@ -8,7 +8,7 @@ ik::position::position(float x, float y, float z)
 
 ik::position::~position() { }
 
-ik::vector* ik::position::vector_to(ik::position* pos) {
+const ik::vector* ik::position::vector_to(const ik::position* pos) const {
 
     auto x = pos->get_x() - get_x();
     auto y = pos->get_y() - get_y();
