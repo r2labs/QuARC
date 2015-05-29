@@ -9,7 +9,7 @@ namespace ik {
     class vector {
     public:
         vector();
-        vector(ik::position* origin,
+        vector(const ik::position* origin,
                float off_x=0,
                float off_y=0,
                float off_z=0);

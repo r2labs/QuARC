@@ -10,7 +10,7 @@ namespace ik {
     public:
         position();
         position(float x, float y, float z);
-        position(const ik::position&);
+        position(const ik::position& p);
         ~position();
 
         const ik::vector* vector_to(const ik::position* p) const;
@@ -23,7 +23,7 @@ namespace ik {
         void set_y(float y) { this->y = y; }
         void set_z(float z) { this->z = z; }
 
-        ik::position& operator= (ik::position& p);
+        ik::position& operator= (const ik::position &p);
 
     private:
         float x;
