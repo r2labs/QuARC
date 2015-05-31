@@ -1,5 +1,5 @@
 project(vector-math)
 set(vector-math-srcs vector-math.cpp)
 add_executable(vector-math ${vector-math-srcs})
-target_link_libraries(vector-math ik)
+target_link_libraries(vector-math ik boost_unit_test_framework)
 add_test(vector-math vector-math)
