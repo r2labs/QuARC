@@ -13,12 +13,14 @@
 #define BOOST_TEST_MODULE Suites
 #include <boost/test/unit_test.hpp>
 
+inline int is_between_inc(int val, int low, int high) { return ((val >= low) && (val <= high)); }
+
 struct vector_math_test_fixture {
 
     ik::position* origin;
     std::vector<ik::vector*>* vecs;
 
-    enum class populate_method { RANDOM, UNIT, CARDINAL};
+    enum class populate_method : unsigned int { RANDOM, UNIT, CARDINAL };
 
     static ik::vector* populate_random(ik::position* origin) {
         int r0 = (int)((float)(rand()) / (float)(RAND_MAX) * (RAND_MAX));
@@ -41,11 +43,12 @@ struct vector_math_test_fixture {
 
     static ik::vector* populate_cardinal(ik::position* origin) {
         int r = (int)((float)(rand()) / (float)(RAND_MAX) * 3.0f);
+
+        BOOST_REQUIRE(is_between_inc(r, 0, 2));
         switch(r) {
-        case 0: return new ik::vector(origin, 1, 0, 0); break;
-        case 1: return new ik::vector(origin, 0, 1, 0); break;
-        case 2: return new ik::vector(origin, 0, 0, 1); break;
-        default: exit(1);
+        case 0: return new ik::vector(origin, 1, 0, 0);
+        case 1: return new ik::vector(origin, 0, 1, 0);
+        default: return new ik::vector(origin, 0, 0, 1);
         }
     }
 
@@ -66,8 +69,7 @@ struct vector_math_test_fixture {
         origin = new ik::position(0, 0, 0);
         vecs = new std::vector<ik::vector*>();
 
-        BOOST_REQUIRE(((int)mtd >= 0) && ((int)mtd < 3));
-
+        BOOST_REQUIRE(is_between_inc((int)mtd, 0, 2));
         switch(mtd) {
         case populate_method::RANDOM   : populate(num, populate_random);   break;
         case populate_method::UNIT     : populate(num, populate_unit);     break;
