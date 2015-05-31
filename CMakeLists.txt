@@ -8,15 +8,20 @@ else(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
 
-option(ENABLE_PROFILING "Enable profiling build options" OFF)
-option(ENABLE_PEDANTIC "Enable pedantic and Wall" ON)
+option(PROFILE "Enable profiling build options" OFF)
+option(PEDANTIC "Enable pedantic and Wall" ON)
+option(COLOR "Enable colorized output (clang-only)" ON)
 
-if(ENABLE_PROFILING)
+if(PROFILE)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs -ftest-coverage")
 endif()
 
-if(ENABLE_PEDANTIC)
+if(PEDANTIC)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pedantic -Wall -Wextra -Werror")
+endif()
+
+if(NOT COLOR)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-color-diagnostics")
 endif()
 
 include_directories("/opt/local/include")

@@ -4,7 +4,7 @@ compiler:
   - gcc
 
 env:
-  - CMAKE_ARGS="-DENABLE_PROFILING=t"
+  - CMAKE_ARGS="-DPROFILE=1"
 
 # Install gcc 4.8 and cpp-coveralls
 before_install:
