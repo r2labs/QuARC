@@ -3,7 +3,11 @@
 
 #include "ik/node.hpp"
 
-int main() {
+#define BOOST_TEST_DYN_LINK
+#define BOOST_TEST_MODULE Suites
+#include <boost/test/unit_test.hpp>
+
+BOOST_AUTO_TEST_CASE(distance_projection) {
 
     const float node0_x = 0;
     const float node0_y = 0;
@@ -24,11 +28,10 @@ int main() {
     delete node0;
     delete node1;
 
-    if (fabs(calculated_distance - actual_distance) > pow(10, -6)) {
-        std::cout << "calculated distance: " << calculated_distance << "\n"
-                  << "actual distance: " << actual_distance << "\n";
-        return 1;
-    }
+    BOOST_CHECK(fabs(calculated_distance - actual_distance) < pow(10, -6));
 
-    return 0;
+    /* if () { */
+    /*     std::cout << "calculated distance: " << calculated_distance << "\n" */
+    /*               << "actual distance: " << actual_distance << "\n"; */
+    /* } */
 }
