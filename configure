@@ -24,7 +24,7 @@ build() {
     reconfigure_guard && pushd ${BUILD_ROOT}; make ${MAKEFLAGS}
 }
 
-rebuild() {
+fbuild() {
     build; popd
 }
 
