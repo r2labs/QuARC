@@ -5,6 +5,3 @@ Qualcomm Articulated Robot Control
 [[https://coveralls.io/r/r2labs/QuARC][file:https://coveralls.io/repos/r2labs/QuARC/badge.svg]]
 ** TODOs
 *** TODO Write Readme
-*** TODO Integrate with boost.test
-*** TODO Integrate with ctest
-
