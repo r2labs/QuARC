@@ -1,9 +1,12 @@
 export REPO_ROOT=`pwd`
 export CMAKE_ROOT=${REPO_ROOT}
 export BUILD_ROOT=${CMAKE_ROOT}/build
+export COV_ROOT=${CMAKE_ROOT}/coverage
+export MAKEFLAGS="-j32"
 
 unconfigure() {
     rm -rf ${BUILD_ROOT}
+    rm -rf ${COV_ROOT};
     cd ${REPO_ROOT}
 }
 
@@ -13,14 +16,27 @@ reconfigure() {
         cmake $@ ..
 }
 
+reconfigure_guard() {
+    if [[ ! -d ${BUILD_ROOT} ]]; then reconfigure; fi;
+}
+
+fbuild() {
+    reconfigure_guard && pushd ${BUILD_ROOT} && make ${MAKEFLAGS} && popd
+}
+
+alias rebuild=fbuild
+
+build() {
+    reconfigure_guard && cd ${BUILD_ROOT} && make ${MAKEFLAGS}
+}
 
 gencov() {
     if [[ ! -d ${BUILD_ROOT} ]]; then
         reconfigure -DPROFILE=1;
     fi;
 
-    cd ${BUILD_ROOT}
-    make -j32
+    mkdir -p ${COV_ROOT}
+    build
 
     lcov --no-external --capture --initial --directory `realpath ${REPO_ROOT}` --output-file ${COV_ROOT}/initial.info
     make test
