@@ -13,3 +13,23 @@ reconfigure() {
         cmake $@ ..
 }
 
+
+gencov() {
+    if [[ ! -d ${BUILD_ROOT} ]]; then
+        reconfigure -DPROFILE=1;
+    fi;
+
+    cd ${BUILD_ROOT}
+    make -j32
+
+    lcov --no-external --capture --initial --directory `realpath ${REPO_ROOT}` --output-file ${COV_ROOT}/initial.info
+    make test
+    lcov --no-external --capture --directory `realpath ${REPO_ROOT}` --output-file ${COV_ROOT}/test.info
+    lcov --add-tracefile ${COV_ROOT}/initial.info --add-tracefile ${COV_ROOT}/test.info --output-file ${COV_ROOT}/complete.info
+    genhtml --prefix ${REPO_ROOT} --ignore-errors source ${COV_ROOT}/complete.info \
+            --legend --title `git rev-parse HEAD` --output-directory=${COV_ROOT}/html
+}
+
+gencovr() {
+    unconfigure && gencov;
+}
