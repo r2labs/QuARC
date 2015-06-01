@@ -20,14 +20,12 @@ reconfigure_guard() {
     if [[ ! -d ${BUILD_ROOT} ]]; then reconfigure; fi;
 }
 
-fbuild() {
-    reconfigure_guard && pushd ${BUILD_ROOT} && make ${MAKEFLAGS} && popd
+build() {
+    reconfigure_guard && pushd ${BUILD_ROOT}; make ${MAKEFLAGS}
 }
 
-alias rebuild=fbuild
-
-build() {
-    reconfigure_guard && cd ${BUILD_ROOT} && make ${MAKEFLAGS}
+rebuild() {
+    build; popd
 }
 
 gencov() {
