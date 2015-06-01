@@ -24,4 +24,4 @@ script:
   - reconfigure ${CMAKE_ARGS} && make && make test
 
 after_success:
-  - cd ${CMAKE_ROOT} && coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT}/CMakeFiles --gcov-options '\-lp'
+  - cd ${CMAKE_ROOT} && coveralls -b ${BUILD_ROOT} -r ${CMAKE_ROOT} -i ${CMAKE_ROOT} -e ${BUILD_ROOT}/CMakeFiles --gcov-options '\-lp' > /tmp/test 2>&1 ; cat /tmp/test
