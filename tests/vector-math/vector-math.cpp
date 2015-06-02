@@ -92,8 +92,6 @@ BOOST_AUTO_TEST_CASE(mag_unit_vector) {
 
     initialize(1000, vector_math_test_fixture::populate_method::UNIT);
 
-    int errors = 0;
-
     for (std::size_t i=0; i<vecs->size(); ++i) {
 
         const auto v = vecs->at(i);
@@ -102,18 +100,13 @@ BOOST_AUTO_TEST_CASE(mag_unit_vector) {
         const auto actual = 1.0f;
 
         /* if (fabs(calculated - actual) > pow(10, -6)) { */
-        /*     ++errors; */
-
         /*     std::cout << "error: " << v->to_string() << " did not have mag = 1\n"; */
         /*     std::cout << "calculated: " << calculated << "\n" */
         /*               << "actual: " << actual << "\n"; */
-
         /* } */
+
         BOOST_CHECK(fabs(calculated - actual) < pow(10, -6));
-
     }
-
-    BOOST_CHECK(errors == 0);
 }
 
 BOOST_AUTO_TEST_CASE(mag_normalized_vector) {
@@ -133,8 +126,8 @@ BOOST_AUTO_TEST_CASE(mag_normalized_vector) {
         /*     std::cout << "error: " << v->to_string() << " did not have mag = 1\n"; */
         /*     std::cout << "calculated: " << calculated << "\n" */
         /*               << "actual: " << actual << "\n"; */
-
         /* } */
+
         BOOST_CHECK(fabs(calculated - actual) < pow(10, -6));
     }
 }
