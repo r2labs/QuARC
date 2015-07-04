@@ -18,9 +18,9 @@ SCRIPT
 
   # Install common packages
   $install_common_packages = <<SCRIPT
-  if ! which curl; then
-    sudo apt-get install -y curl git
-  fi
+  sudo apt-get update -qq
+  sudo apt-get install -qq -y curl git python-software-properties
+  sudo apt-get install -qq -y {c,}make build-essential python-{pip,dev}
 SCRIPT
   config.vm.provision "shell", inline: $install_common_packages
 
