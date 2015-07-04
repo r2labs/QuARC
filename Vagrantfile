@@ -16,14 +16,5 @@ Vagrant.configure("2") do |config|
 SCRIPT
   config.vm.provision "shell", inline: $configure_env
 
-  # Install common packages
-  $install_common_packages = <<SCRIPT
-  sudo apt-get update -qq
-  sudo apt-get install -qq -y curl git python-software-properties
-  sudo apt-get install -qq -y {c,}make build-essential python-{pip,dev}
-SCRIPT
-  config.vm.provision "shell", inline: $install_common_packages
-
-  # Install test dependencies
   config.vm.provision "shell", path: "env/provision.sh"
 end
