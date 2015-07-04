@@ -13,10 +13,4 @@ sudo update-alternatives --install /usr/bin/gcov gcov /usr/bin/gcov-4.8 90
 cat <<EOF >> /home/vagrant/.bashrc
 export CMAKE_ARGS="-DPROFILE=1"
 source /vagrant/configure
-build() {
-    reconfigure ${CMAKE_ARGS} && make
-}
-test() {
-    reconfigure ${CMAKE_ARGS} && make && make test
-}
 EOF
