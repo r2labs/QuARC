@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-# Output commands and exit on first failure
-set -e
-set -x
+set -e    # exit on first failure
+set -x    # output each executed command
 
 apt='sudo apt-get -qq -y'
 updated_flag=.updated_apt_get
@@ -12,7 +11,7 @@ if ! test -f ${updated_flag}; then
     ${apt} update
 fi
 
-if ! test -f ${installed_flag} > /dev/null; then
+if ! test -f ${installed_flag}; then
     touch ${installed_flag}
     ${apt} install  curl git python-software-properties
     ${apt} install  {c,}make build-essential python-{pip,dev}
