@@ -27,4 +27,3 @@ export CMAKE_ARGS="-DPROFILE=1"
 source /vagrant/configure
 EOF
 fi
-
