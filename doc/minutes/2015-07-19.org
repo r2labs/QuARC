@@ -1,0 +1,27 @@
+* Changes to the project since last semester
+- Project name change
+  - QuARC to TBD (possibly ARC)
+- PWM
+  - TI 123GSL board used instead of Nucleo
+  - allows for our home-rolled OS to control PWM signals
+  - no licensing infringement
+  - intimate knowledge of the interface and internals
+- IFC
+  - GNU/Linux instead of Android on IFC
+  - less overhead
+- Current protection between PWM and arm
+  - NTE977 Op Amps
+    - we made a trip to fry's to obtain them
+* Accomplshments
+- Got the arm to move
+  - Coded operating system to input signals
+  - Problem: Servos experience oscillation when holding a position
+    - cause: seems to be insufficient current supplied to arm via board
+    - solution: op amps to control current better via sepic regulator
+* TODO
+- open issues
+- tackle open issues
+- next time: make the arm grab something
+  - requires solid base
+  - requires connections to multiple motors
+  - requires stable motor control (hook up op amps)
