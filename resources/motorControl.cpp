@@ -24,7 +24,7 @@ pwm::motorControl::moveToAngle()
 	}
 	else
 	{
-		int index = angleRadians*45
+		int index = angleRadians*45	//this conversion probably needs to be modified.
 		int pulseWidth = pulseWidths[index];
 		/*OUTPUT PULSE WIDTH*/
 		/*I am not familiar with the OS for the PWM, so I am not sure what lines are needed for this*/
