@@ -1,0 +1,34 @@
+digraph project_flowchart {
+
+        graph [dpi=900]
+        node [fontsize=12]
+        concentrate=true
+
+        node [shape=diamond] {
+             research [label="Research"]
+             hardware [label="Hardware"]
+             software [label="Software"]
+             }
+             
+        node [shape=box] {
+             start    [label="Problem Statement from Qualcomm", style=rounded]
+             titoarm  [label="TM4C to Arm"]
+             ifc      [label="IFC"]
+             ui       [label="UI"]
+             ik       [label="IK Technique Implementation"]
+             rviz     [label="rViz"]
+             hardcode [label="Hard-code Movement"]
+             api      [label="API Control for PWM"]
+             finish   [label="Design, Implement, & Test Use Case", style=rounded]
+             }
+             
+        start -> research -> {hardware, software}
+
+        hardware -> {titoarm, ifc}
+        titoarm -> hardcode -> api
+
+        software -> {ik, ui}
+        ik -> rviz
+        ui -> ifc -> rviz -> api -> finish
+
+}
