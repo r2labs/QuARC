@@ -5,9 +5,11 @@ digraph project_flowchart {
         concentrate=true
 
         node [shape=diamond] {
-             research [label="Research"]
-             hardware [label="Hardware"]
-             software [label="Software"]
+             research [label="Research"] {
+                rank=same;
+                hardware [label="Hardware"];
+                software [label="Software"]
+                }
              }
              
         node [shape=box] {
