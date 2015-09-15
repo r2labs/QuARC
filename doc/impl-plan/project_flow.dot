@@ -15,7 +15,7 @@ digraph project_flowchart {
         node [shape=box] {
              start    [label="Problem Statement from Qualcomm", style=rounded]
              titoarm  [label="TM4C to Arm"]
-             ifc      [label="IFC"]
+             ifc      [label="IFC6410"]
              ui       [label="UI"]
              ik       [label="IK Technique Implementation"]
              rviz     [label="rViz"]
