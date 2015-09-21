@@ -11,11 +11,11 @@ digraph project_flowchart {
                 software [label="Software"]
                 }
              }
-             
+
         node [shape=box] {
              start    [label="Problem Statement from Qualcomm", style=rounded]
              titoarm  [label="TM4C to AL5D"]
-             ifc      [label="IFC"]
+             ifc      [label="IFC6410"]
              ui       [label="UI"]
              ik       [label="IK Technique Implementation"]
              rviz     [label="RViz"]
@@ -23,7 +23,7 @@ digraph project_flowchart {
              api      [label="API Control for PWM"]
              finish   [label="Design, Implement, & Test Use Case", style=rounded]
              }
-             
+
         start -> research -> {hardware, software}
 
         hardware -> {titoarm, ifc}

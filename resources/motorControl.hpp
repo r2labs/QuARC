@@ -1,9 +1,9 @@
 #ifndef PWM_MOTORCONTROL_HPP
 #define PWM_MOTORCONTROL_HPP
 
-#define MAX_ANGLE_RADIANS 6.28318530717958
-#define MIN_ANGLE_RADIANS 0
-#define NEUTRAL_ANGLE_RADIANS 1.57079632679490
+#define MAX_ANGLE_DEGREES 180
+#define MIN_ANGLE_DEGREES 0
+#define NEUTRAL_ANGLE_DEGREES 90
 
 
 
@@ -14,7 +14,7 @@ namespace pwm
 		public:
 			/*constructors*/
 			motorControl();
-			motorControl(float angle, bool angleType);	//inputs: angle, signifier of type (T = radians, F = degrees)
+			motorControl(float angle, bool angleType);	//inputs: angle, signifier of type (F = radians, T = degrees)
 
 			/*destructor*/
 			~motorControl();
@@ -24,8 +24,8 @@ namespace pwm
 
 			/*may need to add linear interpolation*/
 		private:
-      float angleRadians;
-        static const float pulseWidths[1801] = 		//LUT for pulse width values, these account for angles 0 to 2pi radians, 1 decimal place precision
+      float angleDegrees;
+        static const float pulseWidths[1801] = 		//LUT for pulse width values, these account for angles 0 to 180 degrees, 1 decimal place precision
         {
           0.000600, 0.000601, 0.000602, 0.000603, 0.000604, 0.000605, 0.000606, 0.000607, 0.000608, 0.000609,
           0.000610, 0.000611, 0.000612, 0.000613, 0.000614, 0.000615, 0.000616, 0.000617, 0.000618, 0.000619,
