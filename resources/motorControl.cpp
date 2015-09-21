@@ -1,10 +1,8 @@
 #include <math.h>
 #include "motorControl.hpp"
 
-
 pwm::motorControl::motorControl(){}
 
-//angleType == true means that the input angle is in degrees
 pwm::motorControl::motorControl(float angle, int angleType)
 {
 	if(angleType == true)
@@ -19,13 +17,13 @@ pwm::motorControl::motorControl(float angle, int angleType)
 
 pwm::motorControl::moveToAngle()
 {
-	if(angleDegrees > 180 || angleDegrees < 0)
+	if(angleDegrees > MAX_ANGLE_DEGREES || angleDegrees < MIN_ANGLE_DEGREES)
 	{
 		return false;
 	}
 	else
 	{
-		int index = angleDegrees*45	//this conversion probably needs to be modified.
+		int index = angleDegrees*10;	//this is because 1 degrees = 10 microseconds and the table is in increments of 1 microsecond
 		int pulseWidth = pulseWidths[index];
 		/*OUTPUT PULSE WIDTH*/
 		/*I am not familiar with the OS for the PWM, so I am not sure what lines are needed for this*/
