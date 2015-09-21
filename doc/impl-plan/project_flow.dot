@@ -14,11 +14,11 @@ digraph project_flowchart {
              
         node [shape=box] {
              start    [label="Problem Statement from Qualcomm", style=rounded]
-             titoarm  [label="TM4C to Arm"]
+             titoarm  [label="TM4C to AL5D"]
              ifc      [label="IFC"]
              ui       [label="UI"]
              ik       [label="IK Technique Implementation"]
-             rviz     [label="rViz"]
+             rviz     [label="RViz"]
              hardcode [label="Hard-code Movement"]
              api      [label="API Control for PWM"]
              finish   [label="Design, Implement, & Test Use Case", style=rounded]
