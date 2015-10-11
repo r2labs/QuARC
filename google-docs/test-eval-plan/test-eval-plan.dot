@@ -1,0 +1,62 @@
+digraph Testing_Plan {
+    rankdir="LR";
+    node[shape=box, fontsize=14];
+    fontsize=18;
+    labeljust="c";
+
+    edge[style=invis, fontsize=12];
+
+    { rank=same;
+        0 [style=invis];
+        01 [style=invis];
+        02 [style=invis];
+        03 [style=invis];
+        0 -> 01 -> 02 -> 03;
+    }
+
+    subgraph clusterSys {
+        s1 [label="Console & IK & PWM"];
+        label="System";
+    }
+
+    subgraph clusterEx {
+        e1 [label="Console & IK"];
+        e2 [label="IK & PWM"];
+        e1 -> e2;
+        label="Execution";
+    }
+
+    subgraph clusterUnit {
+        u1 [label="Console"];
+        u2 [label="IK"];
+        u3 [label="PWM"];
+        u1 -> u2 -> u3;
+        label="Unit";
+    }
+
+    subgraph clusterBlock {
+        b1 [label="Out of Bounds"];
+        b2 [label="Transfer confirmation"];
+        b3 [label="LUT"];
+        b1 -> b2 -> b3;
+        label="Block";
+    }
+
+    0 -> s1;
+    01 -> e1;
+    02 -> u1;
+    03 -> b1;
+
+    edge[style=solid, constraint=false];
+    s1 -> e1;
+    s1 -> e2;
+
+    e1 -> u1;
+    e1 -> u2;
+    e2 -> u2;
+    e2 -> u3;
+
+    u1 -> b1;
+    u1 -> b2;
+    u3 -> b3;
+}
