@@ -1,62 +1,75 @@
 digraph Testing_Plan {
-    rankdir="LR";
-    node[shape=box, fontsize=14];
-    fontsize=18;
-    labeljust="c";
 
-    edge[style=invis, fontsize=12];
+  graph[dpi=900];
+  node[shape=box, fontsize=12];
+  labeljust="c";
 
-    { rank=same;
-        0 [style=invis];
-        01 [style=invis];
-        02 [style=invis];
-        03 [style=invis];
-        0 -> 01 -> 02 -> 03;
+  edge[style=invis, fontsize=12];
+
+  { rank=same;
+    0  [style=invis];
+    01 [style=invis];
+    02 [style=invis];
+    03 [style=invis];
+    0 -> 01 -> 02 -> 03;
+  }
+
+  subgraph clusterBlock {
+    b1 [label="Out of Bounds"];
+    b2 [label="IK"];
+    b3 [label="UART"];
+    b4 [label="LUT"];
+    b1 -> b2 -> b3 ->b4;
+    label="Block";
+  }
+
+  subgraph clusterUnit {
+    u1 [label="Console"];
+    u2 [label="IFC"];
+    subgraph clusterTM4C {
+      u3 [label="Shell"];
+      u4 [label="PWM"];
+      label="TM4C";
     }
+    u1 -> u2 -> u3 -> u4;
+    label="Unit";
+  }
 
-    subgraph clusterSys {
-        s1 [label="Console & IK & PWM"];
-        label="System";
-    }
-
+  subgraph clusterOpt {
     subgraph clusterEx {
-        e1 [label="Console & IK"];
-        e2 [label="IK & PWM"];
-        e1 -> e2;
-        label="Execution";
+      e1 [label="Console & IFC"];
+      e2 [label="IFC & TM4C"];
+      e1 -> e2;
+      label="Execution";
     }
+    label="Optional";
+  }
+  
+  subgraph clusterSys {
+    s1 [label="Console, IFC, & TM4C"];
+    label="System";
+  }
 
-    subgraph clusterUnit {
-        u1 [label="Console"];
-        u2 [label="IK"];
-        u3 [label="PWM"];
-        u1 -> u2 -> u3;
-        label="Unit";
-    }
+  0  -> b1;
+  01 -> u1;
+  02 -> e1;
+  03 -> s1;
 
-    subgraph clusterBlock {
-        b1 [label="Out of Bounds"];
-        b2 [label="Transfer confirmation"];
-        b3 [label="LUT"];
-        b1 -> b2 -> b3;
-        label="Block";
-    }
+  edge[style=solid, constraint=false];
 
-    0 -> s1;
-    01 -> e1;
-    02 -> u1;
-    03 -> b1;
+  b1 -> u1;
+  b2 -> u2;
+  b3 -> u2;
+  b3 -> u3;
+  b4 -> u4;
 
-    edge[style=solid, constraint=false];
-    s1 -> e1;
-    s1 -> e2;
+  u1 -> e1;
+  u2 -> e1;
+  u2 -> e2;
+  u3 -> e2;
+  u4 -> e2;
 
-    e1 -> u1;
-    e1 -> u2;
-    e2 -> u2;
-    e2 -> u3;
-
-    u1 -> b1;
-    u1 -> b2;
-    u3 -> b3;
+  e1 -> s1;
+  e2 -> s1;
+  
 }
