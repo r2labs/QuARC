@@ -1,0 +1,29 @@
+digraph Execution {
+  overlap=prism;
+  rankdir=LR
+  graph[dpi=900];
+  node[shape=box, fontsize=12];
+
+  input [style=invis];
+  output [style=invis];
+
+  subgraph clusterQuarc {
+
+    subgraph E1{
+      console [label="Console"];
+      ifc [label="IFC"];
+      console -> ifc [label="Sanitized Coordinates"];
+    }
+
+    subgraph E2{
+      ifc; 
+      tm4c [label="TM4C"];
+      ifc -> tm4c [label="Joint Angles"];
+    }
+
+    label="QuARC";
+  }
+
+  input -> console [label="Unsanitized Coordinates"];
+  tm4c  -> output  [label="PWM Signals"];
+}
