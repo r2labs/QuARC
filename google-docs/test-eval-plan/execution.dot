@@ -11,7 +11,7 @@ digraph Execution {
 
     subgraph E1{
       console [label="Console"];
-      ifc [label="IFC"];
+      ifc [label="IFC 6410"];
       console -> ifc [label="Sanitized Coordinates"];
     }
 

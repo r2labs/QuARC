@@ -25,7 +25,7 @@ digraph Testing_Plan {
 
   subgraph clusterUnit {
     u1 [label="Console"];
-    u2 [label="IFC"];
+    u2 [label="IFC 6410"];
     subgraph clusterTM4C {
       u3 [label="Shell"];
       u4 [label="PWM"];
@@ -37,8 +37,8 @@ digraph Testing_Plan {
 
   subgraph clusterOpt {
     subgraph clusterEx {
-      e1 [label="Console & IFC"];
-      e2 [label="IFC & TM4C"];
+      e1 [label="Console & IFC 6410"];
+      e2 [label="IFC 6410 & TM4C"];
       e1 -> e2;
       label="Execution";
     }
@@ -46,7 +46,7 @@ digraph Testing_Plan {
   }
   
   subgraph clusterSys {
-    s1 [label="Console, IFC, & TM4C"];
+    s1 [label="Console, IFC 6410, & TM4C"];
     label="System";
   }
 
