@@ -1,4 +1,7 @@
 .vagrant/
+*.plist
+*.xcodeproj/
+*.DS_Store
 *build*/
 *coverage*/
 *.png
