@@ -1,0 +1,33 @@
+digraph Poster_Flow{
+  graph[dpi=900 compound=true];
+  labeljust="c";
+  
+  subgraph clusterUserInterface {
+    coordinates [label=<(X<SUB>1</SUB>,Y<SUB>1</SUB>,Z<SUB>1</SUB>) &amp; (X<SUB>2</SUB>,Y<SUB>2</SUB>,Z<SUB>2</SUB>)>];
+    label="User Console";
+  }
+
+  subgraph clusterIFC {
+    node[shape=box fontsize=12];
+    bounds_checking [label="Bounds Checking"];
+    motion_planning [label="Motion Planning"];
+    pw_conversion   [label="Pulse-width Conversion"];
+    bounds_checking -> motion_planning -> pw_conversion;
+    label="Inforce 6410";
+  }
+
+  subgraph clusterTM4C {
+    pwm_gen [label="Pulse-width Modulation"];
+    label="TM4C123GXL LaunchPad";
+  }
+
+  subgraph clusterAL5D {
+    al5d [style=invis label=""];
+    label="Lynxmotion AL5D";
+  }
+  
+  coordinates -> bounds_checking [ltail=clusterUserInterface lhead=clusterIFC];
+  pw_conversion -> pwm_gen [ltail=clusterIFC lhead=clusterTM4C];
+  pwm_gen -> al5d [ltail=clusterTM4C lhead=clusterAL5D];
+  
+}
