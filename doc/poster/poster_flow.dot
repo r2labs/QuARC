@@ -1,5 +1,5 @@
 digraph Poster_Flow{
-  graph[dpi=900 compound=true];
+  graph[dpi=900 compound=true nodesep=.8 ranksep=.8];
   labeljust="c";
   
   subgraph clusterUserInterface {
