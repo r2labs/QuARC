@@ -4,7 +4,7 @@ digraph Poster_Flow{
   
   subgraph clusterUserInterface {
     coordinates [label=<(X<SUB>1</SUB>,Y<SUB>1</SUB>,Z<SUB>1</SUB>) &amp; (X<SUB>2</SUB>,Y<SUB>2</SUB>,Z<SUB>2</SUB>)>];
-    label="User Console";
+    label=<<b>User Console</b>>;
   }
 
   subgraph clusterIFC {
@@ -13,17 +13,17 @@ digraph Poster_Flow{
     motion_planning [label="Motion Planning"];
     pw_conversion   [label="Pulse-width Conversion"];
     bounds_checking -> motion_planning -> pw_conversion;
-    label="Inforce 6410";
+    label=<<b>Inforce 6410</b>>;
   }
 
   subgraph clusterTM4C {
     pwm_gen [label="Pulse-width Modulation"];
-    label="TM4C123GXL LaunchPad";
+    label=<<b>TM4C123GXL LaunchPad</b>>;
   }
 
   subgraph clusterAL5D {
     al5d [style=invis label=""];
-    label="Lynxmotion AL5D";
+    label=<<b>Lynxmotion AL5D</b>>;
   }
   
   coordinates -> bounds_checking [ltail=clusterUserInterface lhead=clusterIFC];
